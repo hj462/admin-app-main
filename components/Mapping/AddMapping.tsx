@@ -6,8 +6,8 @@ const AddRegulationMapping = ({
   setShowAll,
   multiDropdownValues,
   getID,
-  cThruId,
-  setcThruId,
+  essentialId,
+  setEssentialId,
   regulationIds,
   setRegulationIds,
   addMapping,
@@ -21,8 +21,8 @@ const AddRegulationMapping = ({
               setShowAll={setShowAll}
               multiDropdownValues={multiDropdownValues}
               getID={getID}
-              cThruId={cThruId}
-              setcThruId={setcThruId}
+              essentialId={essentialId}
+              setEssentialId={setEssentialId}
               regulationIds={regulationIds}
               setRegulationIds={setRegulationIds}
               addMapping={addMapping}

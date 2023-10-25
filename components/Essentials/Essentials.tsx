@@ -2,12 +2,12 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import {
-  AddCThruData,
-  DeleteCthruAi,
-  GetCThruData,
-  GetCThruDataById,
-  UpdateCthruAi,
-} from "../../pages/api/AdminAPIs/CThruAi";
+  AddEssentialData,
+  DeleteEssentials,
+  GetEssentialData,
+  GetEssentialDataById,
+  UpdateEssentials,
+} from "../../pages/api/AdminAPIs/Essentials";
 import Button from "../common/Button";
 import DashboardNavbar from "../common/DashboardNavbar";
 import Delete from "../common/Delete";
@@ -16,12 +16,16 @@ import Modal from "../common/Modal";
 import Sidebar from "../common/Sidebar";
 import SidebarOverlay from "../common/SidebarOverlay";
 import Table from "../common/Table";
-import { columns, CthruFormValues, initialValues } from "./CthruAiHelper";
-import CthruForm from "./CthruForm";
+import {
+  columns,
+  EssentialsFormValues,
+  initialValues,
+} from "./EssentialHelper";
+import EssentialsForm from "./EssentialsForm";
 
-const CthruAi = () => {
+const Essentials = () => {
   const [openModal, setOpenModal] = useState(false);
-  const [formData, setFormData] = useState<CthruFormValues>(initialValues);
+  const [formData, setFormData] = useState<EssentialsFormValues>(initialValues);
   const [getID, setGetID] = useState<any>(null);
   const queryClient = useQueryClient();
   const [startCount, setStartCount] = useState(0);
@@ -43,51 +47,51 @@ const CthruAi = () => {
     mlOpsSteps: mlSteps,
   };
 
-  const { data: cThruAiData, isLoading } = useQuery({
-    queryKey: ["cthruAi", startCount, rowsPerPage],
-    queryFn: () => GetCThruData(startCount, rowsPerPage),
+  const { data: essentialsData, isLoading } = useQuery({
+    queryKey: ["essentials", startCount, rowsPerPage],
+    queryFn: () => GetEssentialData(startCount, rowsPerPage),
     refetchOnWindowFocus: true,
   });
 
-  const { data: editCthruAi, isLoading: editLoading } = useQuery({
-    queryKey: ["cThru", getID],
-    queryFn: () => GetCThruDataById(getID),
+  const { data: editEssentials, isLoading: editLoading } = useQuery({
+    queryKey: ["essential", getID],
+    queryFn: () => GetEssentialDataById(getID),
     enabled: getID !== null,
   });
 
-  const { mutate: saveCthruAi, isLoading: saveLoading } = useMutation({
-    mutationFn: AddCThruData,
+  const { mutate: saveEssentials, isLoading: saveLoading } = useMutation({
+    mutationFn: AddEssentialData,
     onSuccess: () => {
-      queryClient.invalidateQueries(["cthruAi"]);
+      queryClient.invalidateQueries(["essentials"]);
       setOpenModal(false);
-      toast.success("C-Thru-Ai added");
+      toast.success("Essential added");
     },
     onError: () => {
-      toast.error("Error while adding C-Thru-Ai");
+      toast.error("Error while adding Essential");
     },
   });
 
-  const { mutate: updateCthruAi, isLoading: updateLoading } = useMutation({
-    mutationFn: () => UpdateCthruAi(editCthruAi?.id, updateData),
-    mutationKey: ["", editCthruAi?.id, SendToAPI],
+  const { mutate: updateEssentials, isLoading: updateLoading } = useMutation({
+    mutationFn: () => UpdateEssentials(editEssentials?.id, updateData),
+    mutationKey: ["", editEssentials?.id, SendToAPI],
     onSuccess: () => {
-      queryClient.invalidateQueries(["cthruAi"]);
+      queryClient.invalidateQueries(["essentials"]);
       setOpenModal(false);
-      toast.success("C-Thru-Ai Requirement Updated");
+      toast.success("Essential Requirement Updated");
     },
     onError: () => {
-      toast.error("Error while updated C-Thru-Ai");
+      toast.error("Error while updated essentials");
     },
   });
-  const { mutate: deleteCthruAi, isLoading: deleteLoading } = useMutation({
-    mutationFn: () => DeleteCthruAi(deleteId),
+  const { mutate: deleteEssentials, isLoading: deleteLoading } = useMutation({
+    mutationFn: () => DeleteEssentials(deleteId),
     onSuccess: () => {
-      queryClient.invalidateQueries(["cthruAi"]);
+      queryClient.invalidateQueries(["essentials"]);
       setOpenModal(false);
       toast.success("Deleted Successfully");
     },
     onError: () => {
-      toast.error("Error while Deleting C-Thru-Ai");
+      toast.error("Error while Deleting essentials");
     },
   });
 
@@ -98,22 +102,22 @@ const CthruAi = () => {
   };
 
   const addRequirements = async () => {
-    saveCthruAi(SendToAPI);
+    saveEssentials(SendToAPI);
     setFormData({ ...initialValues });
   };
 
   const updateRequirements = async () => {
-    updateCthruAi();
+    updateEssentials();
     setGetID(null);
   };
   const deleteRequirement = async () => {
-    deleteCthruAi();
+    deleteEssentials();
     setDeleteId(null);
   };
 
   useEffect(() => {
-    setFormData(editCthruAi);
-  }, [editCthruAi]);
+    setFormData(editEssentials);
+  }, [editEssentials]);
 
   const handleModal = () => {
     setOpenModal(false);
@@ -124,7 +128,7 @@ const CthruAi = () => {
     <div className="flex">
       <Sidebar SidebarContent={true} />
       <div className="w-full">
-        <DashboardNavbar pageTitle="C-Thru-Ai" />
+        <DashboardNavbar pageTitle="Essentials" />
         <div className=" py-5 px-4 flex justify-between items-center">
           <div className="w-80">
             <Input placeholder="Search" type="text" />
@@ -133,7 +137,7 @@ const CthruAi = () => {
             update={getID !== null}
             deleteRow={deleteId !== null}
             title={
-              deleteId ? "Delete Confirmation" : "Add C-Thur-Ai Requirement"
+              deleteId ? "Delete Confirmation" : "Add Essentials Requirement"
             }
             open={openModal}
             setOpen={handleModal}
@@ -141,7 +145,7 @@ const CthruAi = () => {
               deleteId ? (
                 <Delete />
               ) : (
-                <CthruForm
+                <EssentialsForm
                   values={formData}
                   getFormsData={getFormsData}
                   setGetML={setMlSteps}
@@ -163,14 +167,14 @@ const CthruAi = () => {
             setOpen={setEditOverlay}
             loading={editLoading}
             content={
-              <CthruForm
+              <EssentialsForm
                 values={formData}
                 getFormsData={getFormsData}
                 setGetML={setMlSteps}
                 update={getID ? true : false}
               />
             }
-            title="Update C-Thru-Ai Requirement"
+            title="Update Essentials Requirement"
             onSubmit={() => {
               updateRequirements();
               setEditOverlay(false);
@@ -190,7 +194,7 @@ const CthruAi = () => {
         <div className="px-5">
           <Table
             cols={columns}
-            data={cThruAiData?.results}
+            data={essentialsData?.results}
             getUpdateId={(id: any) => {
               setGetID(id);
               setDeleteId(null);
@@ -202,7 +206,7 @@ const CthruAi = () => {
               setOpenModal(true);
             }}
             rowsPerPage={rowsPerPage}
-            totalRows={cThruAiData?.pagination.totalCount}
+            totalRows={essentialsData?.pagination.totalCount}
             setRowsPerPage={setRowsPerPage}
             currentPage={startCount}
             setCurrentPage={setStartCount}
@@ -214,4 +218,4 @@ const CthruAi = () => {
   );
 };
 
-export default CthruAi;
+export default Essentials;

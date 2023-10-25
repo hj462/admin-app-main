@@ -14,7 +14,7 @@ const Sidebar = ({ SidebarContent }: sidebarTypes) => {
   const SidebarItems = [
     {
       id: 0,
-      title: "Regulatory Requirements",
+      title: "Regulatory",
       path: "/regulatory",
       icon: (
         <svg
@@ -33,8 +33,8 @@ const Sidebar = ({ SidebarContent }: sidebarTypes) => {
     },
     {
       id: 1,
-      title: "C-Thru-AI Requirements",
-      path: "/c-thru-ai",
+      title: "Essentials",
+      path: "/essentials",
       icon: (
         <svg
           width="17"
@@ -53,7 +53,7 @@ const Sidebar = ({ SidebarContent }: sidebarTypes) => {
     },
     {
       id: 2,
-      title: "MLOps",
+      title: "Machine Learning Operations",
       path: "/mlops",
       icon: (
         <svg
@@ -72,7 +72,7 @@ const Sidebar = ({ SidebarContent }: sidebarTypes) => {
     },
     {
       id: 3,
-      title: "Regulations Mapping",
+      title: "Compliance Mapping",
       path: "/mapping",
       icon: (
         <svg
@@ -94,7 +94,7 @@ const Sidebar = ({ SidebarContent }: sidebarTypes) => {
     <div className="sticky w-[274px] font-inter">
       <div className="bg-[#393232] w-60 text-white fixed h-full">
         <div className="py-4 px-6">
-          <Image src={logo} alt="logo" width="97" />
+          <h2 className="text-white text-2xl">Home</h2>
         </div>
         {SidebarContent && (
           <>

@@ -1,7 +1,7 @@
 import { getSession } from "next-auth/react";
 import Head from "next/head";
 import React from "react";
-import CthruAi from "../components/CthruAi/CthruAi";
+import Essentials from "../components/Essentials/Essentials";
 
 export async function getServerSideProps(context: any) {
   const session = await getSession(context);
@@ -20,15 +20,15 @@ export async function getServerSideProps(context: any) {
   };
 }
 
-const CthruPage = () => {
+const EssentialsPage = () => {
   return (
     <>
       <Head>
-        <title>C-Thru-Ai</title>
+        <title>Essentials</title>
       </Head>
-      <CthruAi />
+      <Essentials />
     </>
   );
 };
 
-export default CthruPage;
+export default EssentialsPage;

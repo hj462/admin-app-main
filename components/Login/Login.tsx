@@ -22,7 +22,7 @@ const Login = () => {
         <div className="container px-5 py-24 mx-auto flex">
           <div className="w-[500px] bg-white rounded-lg p-8 flex flex-col m-auto mt-10 md:mt-0 relative z-10 shadow-lg">
             <h1 className="text-center mb-2 text-2xl text-[#393232] font-medium">
-              Welcome to C-Thru-ai
+              Welcome
             </h1>
             <p className="text-center text-sm text-[#393232] leading-6 font-normal mb-6">
               {`Don't have an account?`}

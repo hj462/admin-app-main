@@ -1,7 +1,7 @@
 export const columns = [
   {
     id: 0,
-    title: "C-Thru-AI",
+    title: "Essentials",
     key: "key",
   },
   {
@@ -32,8 +32,8 @@ export type addMappingTypes = {
   setShowAll?: any;
   multiDropdownValues?: Array<any>;
   getID: number;
-  cThruId: number | any;
-  setcThruId: any;
+  essentialId: number | any;
+  setEssentialId: any;
   regulationIds: Array<number>;
   setRegulationIds: (value: Array<number>) => void;
   addMapping?: () => void;

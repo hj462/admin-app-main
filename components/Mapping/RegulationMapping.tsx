@@ -18,7 +18,7 @@ const RegulationMapping = () => {
   const [getID, setGetID] = useState<any>(null);
   const [multiSelectedValues, setMultiSelectedValues] = useState<any>([]);
   const [editOverlay, setEditOverlay] = useState(false);
-  const [cThruId, setcThruId] = useState();
+  const [essentialId, setEssentialId] = useState();
   const [regulationIds, setRegulationIds] = useState<any>([]);
   const queryClient = useQueryClient();
 
@@ -40,8 +40,8 @@ const RegulationMapping = () => {
   };
 
   const { mutate: saveMapping, isLoading: saveLoading } = useMutation({
-    mutationFn: () => AddMapping(cThruId, SendToAPI),
-    mutationKey: ["", cThruId, regulationIds],
+    mutationFn: () => AddMapping(essentialId, SendToAPI),
+    mutationKey: ["", essentialId, regulationIds],
     onSuccess: () => {
       queryClient.invalidateQueries(["mapping"]);
       setAddRegulationMapping(false);
@@ -71,8 +71,8 @@ const RegulationMapping = () => {
             setShowAll={setAddRegulationMapping}
             multiDropdownValues={multiSelectedValues}
             getID={getID}
-            cThruId={cThruId}
-            setcThruId={setcThruId}
+            essentialId={essentialId}
+            setEssentialId={setEssentialId}
             regulationIds={regulationIds}
             setRegulationIds={setRegulationIds}
             addMapping={addMapping}
@@ -118,8 +118,8 @@ const RegulationMapping = () => {
                     setShowAll={setAddRegulationMapping}
                     multiDropdownValues={multiSelectedValues}
                     getID={getID}
-                    cThruId={cThruId}
-                    setcThruId={setcThruId}
+                    essentialId={essentialId}
+                    setEssentialId={setEssentialId}
                     regulationIds={regulationIds}
                     setRegulationIds={setRegulationIds}
                   />

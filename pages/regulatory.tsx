@@ -20,7 +20,7 @@ export async function getServerSideProps(context: any) {
   };
 }
 
-const RegulatoryPage = () => {
+const StatutoryPage = () => {
   return (
     <>
       <Head>
@@ -31,4 +31,4 @@ const RegulatoryPage = () => {
   );
 };
 
-export default RegulatoryPage;
+export default StatutoryPage;

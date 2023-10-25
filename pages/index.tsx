@@ -5,8 +5,8 @@ export default function Home() {
   return (
     <div className="font-inter">
       <Head>
-        <title>C-Thru-AI</title>
-        <meta name="description" content="C-Thru-AI" />
+        <title>Home</title>
+        <meta name="description" content="App" />
         <link rel="icon" href="/favicon.ico" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />

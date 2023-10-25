@@ -18,7 +18,7 @@ const MultiSelectDropdown = ({
     <>
       <Select
         isMulti
-        name="MLOPS"
+        name="Options"
         options={options}
         className="basic-multi-select mb-4 w-full"
         classNamePrefix="select"

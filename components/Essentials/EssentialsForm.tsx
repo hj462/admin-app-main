@@ -4,9 +4,9 @@ import { GetAllSteps } from "../../pages/api/AdminAPIs/MLOpsSteps";
 import Input from "../common/Input";
 import MultiSelectDropdown from "../common/MultiSelectDropdown";
 import TextArea from "../common/TextArea";
-import { formType } from "./CthruAiHelper";
+import { formType } from "./EssentialHelper";
 
-const CthruForm = ({
+const EssentialsForm = ({
   getFormsData,
   values,
   setGetML,
@@ -47,9 +47,9 @@ const CthruForm = ({
           Details
         </h2>
         <Input
-          label="C-Thru-AI Requirement Key"
-          id="c-thru-ai-requirement-key"
-          placeholder="C-Thru-AI requirement Key"
+          label="Essential Requirement Key"
+          id="essential-requirement-key"
+          placeholder="Essential requirement Key"
           type="text"
           onChange={getFormsData}
           name="key"
@@ -90,4 +90,4 @@ const CthruForm = ({
   );
 };
 
-export default CthruForm;
+export default EssentialsForm;

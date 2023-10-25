@@ -1,13 +1,13 @@
 import StepsBox from "../common/StepsBox";
 
-export const initialValues: CthruFormValues = {
+export const initialValues: EssentialsFormValues = {
   key: "",
   description: "",
   comments: "",
   mlOpsSteps: undefined,
 };
 
-export type CthruFormValues = {
+export type EssentialsFormValues = {
   mlOpsSteps: any;
   key: string;
   description: string;
@@ -16,7 +16,7 @@ export type CthruFormValues = {
 
 export type formType = {
   getFormsData?: any;
-  values: CthruFormValues;
+  values: EssentialsFormValues;
   setGetML: any;
   update?: boolean;
 };
@@ -24,7 +24,7 @@ export type formType = {
 export const columns = [
   {
     id: 0,
-    title: "C-Thru-AI Requirement Key",
+    title: "Essentials Requirement Key",
     key: "key",
   },
   {

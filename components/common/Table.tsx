@@ -84,7 +84,7 @@ const Table = ({
                         }
                         onClick={() => {
                           col.id == 0
-                            ? router.pathname === "/c-thru-ai"
+                            ? router.pathname === "/essentials"
                               ? getUpdateId(item.key)
                               : getUpdateId(item.id)
                             : null;
@@ -118,7 +118,7 @@ const Table = ({
                                 : "cursor-pointer mr-3"
                             }
                             onClick={() => {
-                              router.pathname === "/c-thru-ai"
+                              router.pathname === "/essentials"
                                 ? getUpdateId(item.key)
                                 : getUpdateId(item.id);
                             }}

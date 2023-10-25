@@ -1,12 +1,12 @@
 import { fireEvent, render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import CthruAi from "./CthruAi";
+import Essentials from "./Essentials";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import React from "react";
 jest.mock("next/router", () => ({
   useRouter() {
     return {
-      route: "/c-thru-ai",
+      route: "/essentials",
       pathname: "",
       query: "",
       asPath: "",
@@ -72,17 +72,17 @@ const deleteId = 2;
 useStateSpy.mockImplementationOnce(() => [getID, setGetID]);
 useStateSpy.mockImplementationOnce(() => [deleteId, setDeleteId]);
 
-describe("C Thru Ai", () => {
+describe("Essentials", () => {
   beforeEach(() => {
     render(
       <QueryClientProvider client={testQueryClient}>
-        <CthruAi />
+        <Essentials />
       </QueryClientProvider>
     );
   });
 
-  it("renders a C Thru Ai page", () => {
-    const text = screen.getByText("C-Thru-Ai");
+  it("renders a essential page", () => {
+    const text = screen.getByText("Essentials");
     expect(text).toBeInTheDocument();
   });
 
